@@ -13,24 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\patterns">
-      <UniqueIdentifier>{b113007e-deb7-4ed7-ac8e-59a1ad3a71ae}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp">
+    <ClInclude Include="src\hooking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scanner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="patterns\Hooking.Patterns.cpp">
-      <Filter>Source Files\patterns</Filter>
+    <ClCompile Include="src\scanner.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="patterns\Hooking.Patterns.h">
-      <Filter>Source Files\patterns</Filter>
-    </ClInclude>
-    <ClInclude Include="patterns\hooking.h">
-      <Filter>Source Files\patterns</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
