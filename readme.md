@@ -8,4 +8,4 @@ the version when R* added DLSS to the game or higher(I don't remember the versio
 ASI loader **dinput8.dll** which comes with [Script Hook RDR2](http://www.dev-c.com/rdr2/scripthookrdr2/) or **version.dll** which you can download from [rdr2mods website](https://www.rdr2mods.com/downloads/rdr2/tools/9-rdr-2-asi-loader/)
 
 # Installation 
-download any of the mentioned asi loaders put them where **RDR2.exe** is located downoad **NVGX_Loader.asi** and **nvngx_loader_options** from[here](https://github.com/0x-FADED/RDR2-NVGX-Loader/releases) and extract it on the same place. download DLSS2FSR from [here](https://github.com/PotatoOfDoom/CyberFSR2) then extract it on the same place and enjoy.
+download any of the mentioned asi loaders put them where **RDR2.exe** is located downoad **NVGX_Loader.asi** and **nvngx_loader_options.toml** from[here](https://github.com/0x-FADED/RDR2-NVGX-Loader/releases) and extract it on the same place. download DLSS2FSR from [here](https://github.com/PotatoOfDoom/CyberFSR2) then extract it on the same place and enjoy.
