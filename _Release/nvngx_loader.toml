@@ -1,0 +1,3 @@
+[nvngx_loader_options]
+# values are bool 0 = false and 1 = true
+Disable_sharpening_and_auto_exposure = 1
