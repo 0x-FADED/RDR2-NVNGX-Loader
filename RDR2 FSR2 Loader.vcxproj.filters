@@ -21,12 +21,18 @@
     <ClInclude Include="src\scanner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\toml++.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\scanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\toml++.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -21,10 +21,12 @@
   <ItemGroup>
     <ClInclude Include="src\hooking.h" />
     <ClInclude Include="src\scanner.h" />
+    <ClInclude Include="src\toml++.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\scanner.cpp" />
+    <ClCompile Include="src\toml++.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

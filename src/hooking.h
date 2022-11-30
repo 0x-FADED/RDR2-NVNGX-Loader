@@ -40,6 +40,6 @@ namespace hook
 
 		VirtualProtect(reinterpret_cast<void*>(address), std::size(patch), oldProtect, &oldProtect);
 
-		FlushInstructionCache(GetCurrentProcess(), reinterpret_cast<void*>(address), std::size(patch)); //not sure if we need this 
+		FlushInstructionCache(GetCurrentProcess(), reinterpret_cast<void*>(address), std::size(patch));
 	}
 }
