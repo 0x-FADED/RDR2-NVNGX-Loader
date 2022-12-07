@@ -2,14 +2,14 @@
 
 	std::pair<uintptr_t, uintptr_t> GetModule(const std::wstring_view moduleName)
 	{
-			const static uintptr_t moduleBase = reinterpret_cast<uintptr_t>(GetModuleHandleW(moduleName.data()));
-			const static uintptr_t moduleEnd = [&]()
-			{
-				auto ntHeaders = reinterpret_cast<PIMAGE_NT_HEADERS64>(moduleBase + reinterpret_cast<PIMAGE_DOS_HEADER>(moduleBase)->e_lfanew);
-				return static_cast<uintptr_t>(moduleBase + ntHeaders->OptionalHeader.SizeOfImage);
-			}();
+		const auto dosHeader = reinterpret_cast<PIMAGE_DOS_HEADER>(GetModuleHandleW(moduleName.data()));
+		const auto ntHeaders = reinterpret_cast<PIMAGE_NT_HEADERS64>(reinterpret_cast<uintptr_t>(dosHeader) + dosHeader->e_lfanew);
 
-			return { moduleBase, moduleEnd };
+		static const uintptr_t moduleBase = static_cast<uintptr_t>(ntHeaders->OptionalHeader.ImageBase);
+		static const uintptr_t moduleEnd = moduleBase + static_cast<uintptr_t>(ntHeaders->OptionalHeader.SizeOfImage);
+
+		return { moduleBase , moduleEnd };
+
 	}
 
 
@@ -43,32 +43,34 @@
 		if (sig == dataEnd)
 			return NULL;
 
-		return std::distance(dataStart, sig) + startAddress;
+		return std::distance<const uint8_t*>(dataStart, sig) + startAddress;
 	}
 
 	uintptr_t scanner::GetAddress(const std::wstring_view moduleName, const std::string_view pattern, ptrdiff_t offset)
 	{
-		if (GetModuleHandleW(moduleName.data()) != nullptr)
+		uintptr_t address = FindPattern(GetModule(moduleName.data()).first, GetModule(moduleName.data()).second - GetModule(moduleName.data()).first, pattern.data());
+
+		if ((GetModuleHandleW(moduleName.data()) == nullptr) || (address == NULL))
 		{
-			uintptr_t address = FindPattern(GetModule(moduleName.data()).first, GetModule(moduleName.data()).second - GetModule(moduleName.data()).first, pattern.data());
-
-			if (address == NULL)
-				throw std::runtime_error("Failed to find pattern");
-
+			throw std::runtime_error("Pattern not found!");
+		}
+		else
+		{
 			return (address + offset);
 		}
 	}
 
 	uintptr_t scanner::GetOffsetFromInstruction(const std::wstring_view moduleName, const std::string_view pattern, ptrdiff_t offset)
 	{
-		if (GetModuleHandleW(moduleName.data()) != nullptr)
+		uintptr_t address = FindPattern(GetModule(moduleName.data()).first, GetModule(moduleName.data()).second - GetModule(moduleName.data()).first, pattern.data());
+
+		if ((GetModuleHandleW(moduleName.data()) != nullptr) && (address != NULL))
 		{
-			uintptr_t address = FindPattern(GetModule(moduleName.data()).first, GetModule(moduleName.data()).second - GetModule(moduleName.data()).first, pattern.data());
-
-			if (address == NULL)
-				throw std::runtime_error("Failed to find pattern");
-
 			auto reloffset = *reinterpret_cast<int32_t*>(address + offset) + sizeof(int32_t);
 			return (address + offset + reloffset);
+		}
+		else
+		{
+			throw std::runtime_error("Pattern not found!");
 		}
 	}

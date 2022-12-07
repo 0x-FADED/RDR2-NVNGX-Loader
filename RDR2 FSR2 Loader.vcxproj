@@ -34,7 +34,7 @@
     <ProjectGuid>{08c6ad03-c61e-4033-ac24-a5ed8f1ecf39}</ProjectGuid>
     <RootNamespace>RDR2FSR2Loader</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>RDR2 NVGX Loader</ProjectName>
+    <ProjectName>RDR2 NVNGX Loader</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -83,7 +83,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>.\_Release</OutDir>
-    <TargetName>NVGX_Loader</TargetName>
+    <TargetName>NVNGX_Loader</TargetName>
     <TargetExt>.asi</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

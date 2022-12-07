@@ -1,4 +1,4 @@
 [nvngx_loader_options]
 # values are bool so they must be true or false
 Disable_NVNGX_Checks = true   # patches GPU and Signature check allowing the Game to load nvngx.dll on any GPU
-Disable_DLSS_Sharpening_and_AutoExposure = true     # self explanatory
+Disable_DLSS_Sharpening_and_AutoExposure = false     # self explanatory
